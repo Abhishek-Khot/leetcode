@@ -26,7 +26,7 @@ class Solution {
     }
     public double soupServings(int n) {
         //to avoid the large values at last
-        if(n >= 5000){
+        if(n >= 4276){
             return 1.0;
         }
         
