@@ -3,6 +3,20 @@
 // it contains 0 to n graph creations only distance x and y and for r is just for radius 
 // for connected component we need to find the relation using graph 
 class Solution {
+    public void bfsForEveryNode(HashSet<Integer> set,ArrayList<ArrayList<Integer>> adj,int src){
+        set.add(src);
+        Queue<Integer> q = new LinkedList<>();
+        q.add(src);
+        while(!q.isEmpty()){
+            int curr = q.remove();
+            for(int dest : adj.get(curr)){
+                if(!set.contains(dest)){
+                    q.add(dest);
+                    set.add(dest);
+                }
+            }
+        }
+    }
     public void dfsForEveryNode(HashSet<Integer> set,ArrayList<ArrayList<Integer>> adj,int src){
         set.add(src);
         for(int dest : adj.get(src)){
@@ -41,7 +55,7 @@ class Solution {
         }
         HashSet<Integer> set = new HashSet<>();
         for(int i = 0;i<n;i++){
-            dfsForEveryNode(set,adj,i);
+            bfsForEveryNode(set,adj,i);
             int currInvet = set.size();
             res = Math.max(res,currInvet);
             set.clear();
