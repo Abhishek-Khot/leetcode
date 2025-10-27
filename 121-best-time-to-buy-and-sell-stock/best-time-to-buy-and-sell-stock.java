@@ -4,8 +4,13 @@ class Solution {
         int maxProfit = 0;
         int n = prices.length;
         for(int i = 0;i<n;i++){
-            buyPrice = Math.min(buyPrice,prices[i]);
-            maxProfit = Math.max(maxProfit,prices[i]-buyPrice);
+            if(buyPrice < prices[i]){
+                int profit = prices[i] - buyPrice;
+                maxProfit = Math.max(maxProfit,profit);
+            }
+            else{
+                buyPrice = prices[i];
+            }
         }
         return maxProfit;
     }
