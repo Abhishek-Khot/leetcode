@@ -1,10 +1,12 @@
 class Solution {
+    // travese usaually just reverse add input
+
     public int[][] transpose(int[][] matrix) {
-        int rows = matrix.length;
-        int cols = matrix[0].length;
-        int res[][]= new int[cols][rows];
-        for(int i= 0;i<rows;i++){
-            for(int j = 0;j<cols;j++){
+        int row = matrix.length;
+        int col = matrix[0].length;
+        int[][] res = new int[col][row];
+        for(int i= 0;i<row;i++){
+            for(int j = 0;j<col;j++){
                 res[j][i] = matrix[i][j];
             }
         }
