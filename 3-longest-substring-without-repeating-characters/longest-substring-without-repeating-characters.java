@@ -1,18 +1,21 @@
 class Solution {
     public int lengthOfLongestSubstring(String s) {
-        int i = 0;
-        int j = 0;
-        int maxLen = 0;
+        // if map size i less than j - i +1 then only remove -- check for the example once
         int n = s.length();
+        int i  =0;
+        int j = 0;
         HashMap<Character,Integer> map = new HashMap<>();
+        int res = 0;
+
         while(j < n){
-            map.put(s.charAt(j),map.getOrDefault(s.charAt(j),0)+1);
+            char ch = s.charAt(j);
+            map.put(ch,map.getOrDefault(ch,0)+1);
             if(map.size() == j - i +1){
-                maxLen = Math.max(maxLen,j - i+1);
+                res = Math.max(res,j-i+1);
             }
-            else if(map.size() < j - i +1){
+            else if (map.size() < j- i +1){
                 while(map.size() < j - i +1){
-                    map.put(s.charAt(i),map.get(s.charAt(i))-1);
+                    map.put(s.charAt(i),map.getOrDefault(s.charAt(i),0)-1);
                     if(map.get(s.charAt(i)) == 0){
                         map.remove(s.charAt(i));
                     }
@@ -21,6 +24,6 @@ class Solution {
             }
             j++;
         }
-        return maxLen;
+        return res;
     }
 }
