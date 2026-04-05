@@ -10,24 +10,27 @@
  */
 class Solution {
     public ListNode deleteDuplicates(ListNode head) {
-        LinkedHashMap<Integer,Integer> map = new LinkedHashMap<>();
-        while(head != null){
-            map.put(head.val,map.getOrDefault(head.val,0)+1);
-            head = head.next;
-        }
+        // easy question
         ListNode dummy = new ListNode(-1);
-        ListNode newHead = dummy;
+        dummy.next = head;
+        ListNode prev = dummy; //used to track the duplicates 
+        ListNode curr = head;
 
-        for(Map.Entry<Integer,Integer> entry : map.entrySet()){
-            int num = entry.getValue();
-            if(num != 1){
-                continue;
+        while(curr != null && curr.next != null){
+            // if duplicate occurs 
+            if(curr.val == curr.next.val){
+                while(curr.next != null && curr.val == curr.next.val){
+                    curr = curr.next;
+                }
+                // point prev to curr.next
+                prev.next = curr.next;
             }
-            ListNode curr = new ListNode(entry.getKey());
-            dummy.next = curr;
-            dummy = dummy.next;
+            // if no duplicates 
+            else{
+                prev = prev.next;
+            }
+            curr = curr.next;
         }
-        
-        return newHead.next;
+        return dummy.next;
     }
 }
