@@ -14,7 +14,7 @@ class Solution {
         }
         // both chars are same just move to next no need to anything
         if(word1.charAt(i) == word2.charAt(j)){
-            return dp[i][j]= solve(word1,word2,i+1,j+1);
+            return  solve(word1,word2,i+1,j+1); // learning -> try to memorize everything
         }
         // if both are different try each operation -> take minimum
         else{
