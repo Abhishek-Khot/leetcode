@@ -9,8 +9,9 @@ class Solution {
         int res = Integer.MAX_VALUE;
         int n = nums.length;
         for(int i = 0;i<n;i++){
-            // two optimization if i and j th elt is not equal just continue no need to run k th loop
             for(int j = i +1 ;j < n;j++){
+            // two optimization if i and j th elt is not equal just continue no need to run k th loop
+                if(nums[i] != nums[j]) continue;
                 for(int k = j +1 ;k<n;k++){
                     if(nums[i]== nums[j] && nums[j] == nums[k]){
                         res = Math.min(2 * (k - i),res);
