@@ -13,9 +13,9 @@ class Solution {
                 List<Integer> curr = map.get(val);
                 int size = curr.size();
                 int ithelt = curr.get(size - 3);
-                res = Math.min(res, 2 * (k - ithelt));
+                res = Math.min(res, (k - ithelt));
             }
         }
-        return res == Integer.MAX_VALUE ? -1 : res;
+        return res == Integer.MAX_VALUE ? -1 :2* res;
     }
 }
